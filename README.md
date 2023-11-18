@@ -6,6 +6,7 @@
 1. [JPA란?](#1-jpa란)
 2. [JPA 사용](#2-jpa-사용)
 	> 2-1 [JPA 테이블 등록하기](#2-1-jpa-테이블-등록하기)
+	> 2-2 [CRUD](#2-2-crud)
 
 ***
 ## 1. JPA란?
@@ -85,3 +86,21 @@
 
 	데이터베이스의 BLOB, CLOB, TEXT 타입과 매핑이 된다.
 
+### 2-2 CRUD
+JPA를 통해서 CRUD하기 위해서는 JPA에 대한 구조적 이해가 필요하다.<br>
+이는 [3. JPA 구조](#3-jpa-구조)에서 확인한다.
+
+@PersistenceContext
+
+	영속성컨텍스트를 사용할 수 있도록 한다.
+EntityMangerFactory
+
+	EntityManager를 만들고 구성하는 법을 제공하는 interface이다
+EntityManager
+
+	DB 테이블과 매핑된 Entity에 대한 CRUD를 수행하는 method를 제공하며 
+ 	Entity의 영속성과 생명주기를 관리, 담당한다.
+- 
+  
+***
+## 3. JPA 구조

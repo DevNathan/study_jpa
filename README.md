@@ -6,7 +6,7 @@
 1. [JPA란?](#1-jpa란)
 2. [JPA 사용](#2-jpa-사용)
 	> 2-1 [JPA 테이블 등록하기](#2-1-jpa-테이블-등록하기)<br>
-	> 2-2 [CRUD](#2-2-crud)
+	> 2-2 [EntityManager와 메소드들](#2-2-EntityManager와-메소드들)
 
 ***
 ## 1. JPA란?
@@ -86,13 +86,14 @@
 
 	데이터베이스의 BLOB, CLOB, TEXT 타입과 매핑이 된다.
 
-### 2-2 CRUD
+### 2-2 EntityManager와 메소드들
 JPA를 통해서 CRUD하기 위해서는 JPA에 대한 구조적 이해가 필요하다.<br>
-이는 [3. JPA 구조](#3-jpa-구조)에서 확인한다.
+이는 영속성 컨텍스트와 밀접한 관련이 있으며 이것에 대해서는<br>
+[3. JPA 구조](#3-jpa-구조)에서 확인한다.
 
 @PersistenceContext
 
-	영속성컨텍스트를 사용할 수 있도록 한다.
+	영속성 컨텍스트를 사용할 수 있도록 한다.
 EntityMangerFactory
 
 	EntityManager를 만들고 구성하는 법을 제공하는 interface이다
@@ -100,7 +101,36 @@ EntityManager
 
 	DB 테이블과 매핑된 Entity에 대한 CRUD를 수행하는 method를 제공하며 
  	Entity의 영속성과 생명주기를 관리, 담당한다.
-- 
+- persist()
+
+		DB의 INSERT에 해당하는 메소드이지만 그 작동방식이 다르다.
+  		EntityManager에게 Entity를 넘겨줘서 영속화 시키고 INSERT쿼리를 생성해주는
+  		메소드가 persist()이다. 이 메소드는 INSERT쿼리문을 작동시키는 것은 해당하지 않는다.
+- flush()
+
+		쿼리문을 DB에 반영한다. 하지만 COMMIT된 상태는 아니다.
+  		@Transactional과 @Commit을 붙혀서 COMMIT까지 완료시킬 수 있다.  
+- find()
+
+		Entity의 클래스와 PK를 알려주면 해당 엔티티를 1차 캐시에서 찾아온다.
+  		만약 1차 캐시에 존재하지 않을 경우 SELECT문을 통해 조회한다.
+  		이 때, SELECT문의 결과를 가져오는 것이 아닌 1차 캐시에 영속화 시킨 후
+  		그 영속화 된 데이터를 가져오는 것이다.
+- detach()
+
+    		영속성 컨텍스트에 등록된 엔티티를 영속성 컨텍스트에서 제외시켜
+  		해당 데이터를 준영속 상태로 만든다
+- remove()
+
+		해당 데이터를 캐시와 DB에서 모두 삭제한다.
+- merge()
+
+		준영속 상태가 된 데이터를 다시 영속화 시킬 때 사용한다.
   
 ***
 ## 3. JPA 구조
+[영속성컨텍스트.pdf](https://github.com/DevNathan/study_jpa/files/13400337/default.pdf)
+
+
+***
+## 4. JPQL

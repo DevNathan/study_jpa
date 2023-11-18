@@ -6,7 +6,7 @@
 1. [JPA란?](#1-jpa란)
 2. [JPA 사용](#2-jpa-사용)
 	> 2-1 [JPA 테이블 등록하기](#2-1-jpa-테이블-등록하기)<br>
-	> 2-2 [EntityManager와 메소드들](#2-2-EntityManager와-메소드들)
+	> 2-2 [EntityManager와 메소드들](#2-2-EntityManager와-메소드들)<br>
  	> 2-3 [조합키 사용](#2-3-조합키-사용)
 
 ***

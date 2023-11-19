@@ -14,7 +14,7 @@
     객체(JAVA)와 RDB의 패러다임 불일치 문제를 해소하기위해 RDB를 객체지향적으로 만들어 사용하자는
     취지에서 ORM이 탄생하였고 이 ORM을 사용하기 위한 JPA가 탄생하였다.
 
-- ORM(Object Relational Mapping
+- ORM(Object Relational Mapping)
 
       객체지향 언어와 관계형 DB와의 데이터를 매핑해주는 기술 (클래스와 테이블을 그대로 맵핑)
 	    객체지향 언어와 관계형 DB는 서로 다른 구조를 가지고 있기 때문에

@@ -193,7 +193,7 @@ EntityManager
 <img width="490" alt="스크린샷 2023-11-19 090341" src="https://github.com/DevNathan/study_jpa/assets/142222091/9c9af39a-4476-441a-8539-aa1ff90a506b">
 
 	다시 돌아와서 클래스에 @IdClass를 붙혀주고 바로전에 만든 
- 	조합키 클래스를 직접 연결해주며 N:1 관계를 잘 붙혀주면 완성된다.
+ 	조합키 클래스를 직접 연결해주며 N:1 관계를 잘 잡아주면 완성된다.
 
 
 ***

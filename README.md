@@ -271,14 +271,14 @@ EntityManager
 #### 관련 어노테이션
 @MappedSuperclass
 
-		객체 상속을 할 수 있도록 해주는 어노테이션이다.
-  		이 어노테이션이 있는 클래스를 확장하여 사용시 해당 컬럼들이 주입된다.
+	객체 상속을 할 수 있도록 해주는 어노테이션이다.
+  	이 어노테이션이 있는 클래스를 확장하여 사용시 해당 컬럼들이 주입된다.
 @PrePersist(Hibernate지원)
 
-		entityManager의 persist() 직전에 실행되는 메소드로 지정한다.
+	entityManager의 persist() 직전에 실행되는 메소드로 지정한다.
 @PreUpdate(Hibernate지원)
 
-		update에 해당된다.
+	update에 해당된다.
 
 ***
 ## 3. JPA 구조

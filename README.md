@@ -7,7 +7,9 @@
 2. [JPA 사용](#2-jpa-사용)
 	> 2-1 [JPA 테이블 등록하기](#2-1-jpa-테이블-등록하기)<br>
 	> 2-2 [EntityManager와 메소드들](#2-2-EntityManager와-메소드들)<br>
- 	> 2-3 [조합키 사용](#2-3-조합키-사용)
+ 	> 2-3 [조합키 사용](#2-3-조합키-사용)<br>
+ 	> 2-4 [테이블 상속](#2-4-테이블-상속)<br>
+ 	> 2-5 [MappedSuperClass](#2-5-MappedSuperClass)
 
 ***
 ## 1. JPA란?
@@ -231,6 +233,35 @@ EntityManager
    		CON : 반복되는 값을 계속해서 집어 넣어줘야된다는 문제점이 있다.
 
 #### 테이블 상속 관련 어노테이션
+@Inheritance
+
+		테이블간 상속관계를 매핑할 때 사용하게 된다.
+  		부모 테이블 클래스에서 사용한다
+
+		InheritanceType
+  			.JOINED : 조인전략
+			.SINGLE_TABLE : 단일 테이블 전략
+			.TABLE_PER_CLASS : 구현 클래스마다 테이블 생성 전략
+@DiscriminatorColumn
+
+		부모테이블의 컬럼을 통해 어떤 종류의 자식테이블이 연결되어 있는지 구분하기 위해
+  		타입을 저장할 컬럼을 설정한다.
+
+		name : 구분컬럼의 이름을 지정한다.(Default = "DTYPE")
+@DiscriminatorValue
+
+		자식테이블에서 부모테이블의 구분컬럼에 어떻게 명시해줄 것인지 이름을 설정한다.
+
+    		name : 부모테이블의 컬럼에 저장될 이름을 지정한다.
+@PrimaryKeyJoinColumn
+
+		PK이자 FK로 사용하고자 할 때 사용하는 어노테이션으로 상속테이블과 관련해서
+  		자주 사용된다.
+
+    		name : PK이자 FK가 될 컬럼의 이름을 지정해준다.
+			지정해주지 않을 시 FK로 받게 되는 테이블의 PK 값을 그대로 가져온다.
+
+### 2-5 MappedSuperClass
 
 
 

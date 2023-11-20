@@ -10,6 +10,8 @@
  	> 2-3 [조합키 사용](#2-3-조합키-사용)<br>
  	> 2-4 [테이블 상속](#2-4-테이블-상속)<br>
  	> 2-5 [MappedSuperClass](#2-5-MappedSuperClass)
+3. [JPA 구조](#3-jpa-구조)
+4. [JPQL](#4-jpql)
 
 ***
 ## 1. JPA란?

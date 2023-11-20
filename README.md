@@ -263,13 +263,25 @@ EntityManager
     		name : PK이자 FK가 될 컬럼의 이름을 지정해준다.
 			지정해주지 않을 시 FK로 받게 되는 테이블의 PK 값을 그대로 가져온다.
 
-### 2-5 MappedSuperClass
+### 2-5 MappedSuperclass
+	테이블과 매핑하지 않고 단순히 필드를 상속하기 위한 용도의 클래스를 의미한다.
+ 	여러개의 테이블들이 동일하게 공유하게 되는 컬럼, 예를 들어 데이터 생성시간, 업데이트 시간과
+  	같은 것들은 반복적으로 테이블에 넣어야 하니 그걸 대신해주는 클래스라고 할 수 있겠다.
 
+#### 관련 어노테이션
+@MappedSuperclass
 
+		객체 상속을 할 수 있도록 해주는 어노테이션이다.
+  		이 어노테이션이 있는 클래스를 확장하여 사용시 해당 컬럼들이 주입된다.
+@PrePersist(Hibernate지원)
+
+		entityManager의 persist() 직전에 실행되는 메소드로 지정한다.
+@PreUpdate(Hibernate지원)
+
+		update에 해당된다.
 
 ***
 ## 3. JPA 구조
-	
 
 ***
 ## 4. JPQL

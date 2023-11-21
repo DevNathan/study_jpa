@@ -321,7 +321,7 @@ Board board = entityManager.getReference(Board.class, 1L);
 	결과는 false / true 이다.
 ```java
     @Test
-    void find2() {
+    void test() {
 	// 캐시에 저장된 board 정보
         Board board = entityManager.find(Board.class, 1L);
 
@@ -339,6 +339,21 @@ Board board = entityManager.getReference(Board.class, 1L);
 ```
 	결과는 true / true / true 이다.
 
+#### 지연로딩
+	두개의 테이블이 있고 이 테이블은 서로 연결되어있다면 서로를 조회하는 시기를 정할 수 있다.
+ 	앞서 프록시에서 설명했듯 JOIN을 통한 불필요한 정보값을 불러오는 것은 방지할 필요성이 있다.
+
+	이 조회 시기를 결정하는 것은 fetch = FetchType. 이다.
+ 	뒤에 EAGER와 LAZY를 붙힐 수 있으며
+  	1. EAGER는 처음부터 조회를 할때부터 연관된 두 테이블을 JOIN해서 가져오는 방식이다.
+   	2. LAZY는 특정 테이블을 조회할때 그 테이블만 존재하며 JPA 테이블 설계상 비워지게 되는 상대측
+    		테이블 정보는 프록시 객체로 체우게 되는 방식이다.
+
+	이 두가지 전략은 비즈니스 로직에 따라 결정이 되지만,
+ 	일반적으로 불필요한 JOIN은 필요한 것이 맞으므로 처음에는 LAZY로 설정하되, 후에 만들어지는 대부분의
+  	코드가 두 테이블을 동시에 사용하는 것이 디폴트라면 EAGER로 설정하는 것이 훨씬 더 성능이 좋을 것이다.
+   	SELECT문을 두번 날리는 것보단 JOIN쿼리 한번을 날리는 것이 성능상으로 훨씬 뛰어나니 말이다.
+   	
 
 ***
 ## 3. JPA 구조

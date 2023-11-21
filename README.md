@@ -292,9 +292,53 @@ EntityManager
  	할 수 있다.
 
   	여기서 알아두어야 하는 것은 프록시가 생성되기 이전에 찾고자 하는 정보가 영속성 컨텍스트에
-	존재한다면 프록시는 만들어지지 않는다. 만들필요없이 캐시에서 가져다 쓰면 되기 때문이다.
+	존재한다면 프록시는 만들어지지 않는다. 만들 필요없이 캐시에서 가져다 쓰면 되기 때문이다.
 
-#### 프록시 객체
+```java
+Board board = entityManager.getReference(Board.class, 1L);
+```
+	getReference()를 사용하게 되면 프록시 객체를 불러오게 된다. 이렇게 하면
+	좌측 board에는 아무런 값도 없는 "가짜 객체", 프록시 객체가 들어가게 되는 것이다.
+ 
+	단, board가 영속성 컨텍스트의 캐시에 저장되어 있지 않다는 가정하에 "가짜 객체"가 들어간다.
+ 	또한 board를 실질적으로 사용하게 될 시 DB에서 정보 조회를 하게 되므로, 이 때부터는
+  	프록시 객체가 아닌 진짜 엔티티 객체로 나타나게 된다. 
+   
+   	위 사항들은 아래에서 증명.
+```java
+    @Test
+    void testt() {
+        Board board = entityManager.getReference(Board.class, 1L);
+
+        log.info("is It initialized: {}", Hibernate.isInitialized(board)); // 프록시 여부 확인
+
+        log.info(board.getTitle());
+
+	// board의 타이틀 출력을 위해 DB를 조회하게 되고 이로인해 더이상 프록시가 아니게 됨
+        log.info("is It initialized: {}", Hibernate.isInitialized(board)); // 프록시 여부 확인
+    }
+```
+	결과는 false / title / true 이다.
+```java
+    @Test
+    void find2() {
+	// 캐시에 저장된 board 정보
+        Board board = entityManager.find(Board.class, 1L);
+
+        log.info("is It initialized: {}", Hibernate.isInitialized(board)); // 프록시 여부 확인
+
+	// board가 저장되었기에 getReference를 통해 조회해도 프록시 객체는 생성되지 않음
+        board = entityManager.getReference(Board.class, 1L);
+
+        log.info("is It initialized: {}", Hibernate.isInitialized(board)); // 프록시 여부 확인
+
+        log.info(board.getTitle());
+
+        log.info("is It initialized: {}", Hibernate.isInitialized(board)); // 프록시 여부 확인
+    }
+```
+	결과는 true / true / true 이다.
+
 
 ***
 ## 3. JPA 구조

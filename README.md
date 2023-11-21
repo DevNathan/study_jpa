@@ -318,7 +318,7 @@ Board board = entityManager.getReference(Board.class, 1L);
         log.info("is It initialized: {}", Hibernate.isInitialized(board)); // 프록시 여부 확인
     }
 ```
-	결과는 false / title / true 이다.
+	결과는 false / true 이다.
 ```java
     @Test
     void find2() {

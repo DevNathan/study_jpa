@@ -9,7 +9,8 @@
 	> 2-2 [EntityManager와 메소드들](#2-2-EntityManager와-메소드들)<br>
  	> 2-3 [조합키 사용](#2-3-조합키-사용)<br>
  	> 2-4 [테이블 상속](#2-4-테이블-상속)<br>
- 	> 2-5 [MappedSuperClass](#2-5-MappedSuperClass)
+ 	> 2-5 [MappedSuperClass](#2-5-MappedSuperClass)<br>
+ 	> 2-6 [프록시와 지연 로딩](#2-6-프록시와-지연-로딩)
 3. [JPA 구조](#3-jpa-구조)
 4. [JPQL](#4-jpql)
 

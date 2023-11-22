@@ -358,6 +358,13 @@ Board board = entityManager.getReference(Board.class, 1L);
 
 ***
 ## 3. JPA 구조
+	JPA에는 특별한 구조로서 존재하는 것이 있다. 영속성 컨텍스트(Persistence Context)이다.
+ 	이 영속성 컨텍스트의 작동방식을 이해해야 JPA의 구조를 오류없이 만들어낼 수 있다.
+
+### 3-1 영속성 컨텍스트(Persistence Context)
+<img width="628" alt="스크린샷 2023-11-23 000949" src="https://github.com/DevNathan/study_jpa/assets/142222091/cc4688ef-2c37-4e37-8326-5ba34fcae2d5">
+
+
 
 ***
 ## 4. JPQL

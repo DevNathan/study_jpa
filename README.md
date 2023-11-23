@@ -12,6 +12,7 @@
  	> 2-5 [MappedSuperClass](#2-5-MappedSuperClass)<br>
  	> 2-6 [프록시와 지연 로딩](#2-6-프록시와-지연-로딩)
 3. [JPA 구조](#3-jpa-구조)
+	> 3-1 [영속성 컨텍스트(Persistence Context)](#3-1-영속성-컨텍스트persistence-context)
 4. [JPQL](#4-jpql)
 
 ***

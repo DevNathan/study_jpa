@@ -1,5 +1,5 @@
 조남호 | Nathan-Cho<br>
-07.10.23 ~ 진행중
+11.11.23 ~ 진행중
 
 # JPA
 ### 목차
@@ -379,7 +379,21 @@ Board board = entityManager.getReference(Board.class, 1L);
 
 ### 2-8 고아 객체 관리
 	고아 객체는 부모 엔티티와 연관관계가 끊어진 자식 엔티티를 의미한다.
+ 	부모객체와 연관 관계가 끊어진 자식객체는 계속해서 그 정보가 남게 될 수 있으므로 
+  	어떤 수단으로든 제거해주는 것이 좋다.
 
+#### orphanRemoval = true
+	해당 구문으로 OneToMany, OneToOne에 달아주게 될시 부모객체를 제거하게 되면 그에따라
+ 	자식객체도 모두 제거된다.
+
+  	다만 ManyToMany의 구조 등등, 원하지 않는 객체의 삭제까지 될 수 있으므로
+   	사용에 있어서 주의해야 한다.
+
+#### orphanRemoval=true와 Cascade.REMOVE의 차이
+	둘 다 사용의 목적은 같다. 하지만 작동의 방식에 있어서 차이를 보이게 되는데,
+ 
+ 	orphanRemoval은 부모 엔티티에서 자식을 분리시킬 경우 삭제가 된다.
+  	Cascade.REMOVE는 부모 엔티티를 제거할 시 자식도 삭제 된다.
 
 ***
 ## 3. JPA 구조

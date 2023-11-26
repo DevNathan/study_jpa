@@ -11,7 +11,7 @@
  	> 2-4 [테이블 상속](#2-4-테이블-상속)<br>
  	> 2-5 [MappedSuperClass](#2-5-MappedSuperClass)<br>
  	> 2-6 [프록시와 지연 로딩](#2-6-프록시와-지연-로딩)<br>
- 	> 2-7 [영속성 전이(CascadeType)](#2-7-영속성-전이-cascadetype)<br>
+ 	> 2-7 [영속성 전이(CascadeType)](#2-7-영속성-전이cascadetype)<br>
  	> 2-8 [고아 객체 관리](#2-8-고아-객체-관리)
 3. [JPA 구조](#3-jpa-구조)
 	> 3-1 [영속성 컨텍스트(Persistence Context)](#3-1-영속성-컨텍스트persistence-context)

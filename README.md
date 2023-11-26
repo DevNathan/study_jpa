@@ -355,7 +355,31 @@ Board board = entityManager.getReference(Board.class, 1L);
  	일반적으로 불필요한 JOIN은 지양하는 것이 맞으므로 처음에는 LAZY로 설정하되, 후에 만들어지는 대부분의
   	코드가 두 테이블을 동시에 사용하는 것이 디폴트라면 EAGER로 설정하는 것이 훨씬 더 성능이 좋을 것이다.
    	SELECT문을 두번 날리는 것보단 JOIN쿼리 한번을 날리는 것이 성능상으로 훨씬 뛰어나니 말이다.
-   	
+
+### 2-7 영속성 전이(CascadeType)
+	어떤 한 테이블을 영속성 컨텍스트와 관련된 작업을 실시 했을 경우 
+ 	그와 연결되어있는 다른 테이블도 똑같이 작업을 실시시키는 것을 영속성 전이라고 한다.
+
+ 	관계 매핑 어노테이션 옆에 달아주게 되며
+	타입의 종류로는 all, persist, merge, remove, refresh, detach 6가지가 있다.
+#### 1) PERSIST
+<img width="280" alt="스크린샷 2023-11-25 201201" src="https://github.com/DevNathan/study_jpa/assets/142222091/9fb0dbe1-2d49-4a9a-8283-46906a51ff51">
+
+	cascadeType을 지정해주지 않을 경우, 작동시 오류를 일으키게 될 위 사진은
+ 	cascadeType.PERSIST로 지정해주게 되면 함께 영속화가 된다.
+
+#### 2) REMOVE
+<img width="455" alt="스크린샷 2023-11-25 202141" src="https://github.com/DevNathan/study_jpa/assets/142222091/710aeb5b-ab82-4441-b7e2-b48b25086728">
+
+	cascadeType을 지정해주지 않을 경우, 작동 시 오류를 일으키게 될 위 사진은
+ 	cascadeType.REMOVE로 지정해주게 되면 함께 제거된다.
+
+#### 3) ALL
+	cascadeType.ALL로 지정해줄 시, 모든 기능을 다 수행할 수 있다.
+
+### 2-8 고아 객체 관리
+	고아 객체는 부모 엔티티와 연관관계가 끊어진 자식 엔티티를 의미한다.
+
 
 ***
 ## 3. JPA 구조

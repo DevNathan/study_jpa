@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        textarea {
+            resize: none;
+        }
+
+        input {
+            width: 810px;
+            padding: 10px;
+        }
+        .btn-box{
+            text-align: right;
+            width: 830px;
+            margin: 20px 0 0 0;
+        }
+        button{
+            padding: 10px;
+        }
+        fieldset{
+            width: 1000px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<fieldset>
+    <legend>커뮤니티 글쓰기</legend>
+    <form action="/board/write" method="post">
+        <h3>제목</h3>
+        <input type="text" name="boardTitle" id=""> <br> <br>
+        <h3>내용</h3>
+        <textarea cols="100" rows="40" name="boardContent"></textarea>
+        <br>
+        <div class="btn-box">
+            <button>작성 완료</button>
+        </div>
+    </form>
+</fieldset>
+</body>
+</html>

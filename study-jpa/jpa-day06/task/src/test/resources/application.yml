@@ -1,0 +1,30 @@
+server:
+  port: 10000
+
+
+# H2 Database 설정
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test;MODE=Oracle   # H2 DB 연결 url (In-Memory Mode)
+    #url: 'jdbc:h2:~/test'    # H2 DB 연결 url (Embedded Mode)
+    #url: 'jdbc:h2:tcp://localhost/~/test'    # H2 DB 연결 url (Server Mode) 서버모드는 h2 db 설치가 필요함
+    username: sa        # H2 DB 접속 ID (사용자 지정)
+    password: 1234        # H2 DB 접속 PW (사용자 지정)
+
+  # H2 Console 설정
+  h2:
+    console: # H2 DB를 웹에서 접근할지 설정
+      enabled: true           # H2 Console 사용 여부
+      path: /h2-console       # H2 Console 접속 주소
+
+  # JPA 설정
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: create        # ddl-auto 설정(none, create, create-drop, update, validate)
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.H2Dialect
+#        format_sql: true      # 쿼리 로그 포맷 (정렬)
+#        show_sql: true        # 쿼리 로그 출력

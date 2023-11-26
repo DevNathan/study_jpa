@@ -1,0 +1,72 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.2.0'
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+group = 'com.jpa'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '17'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.projectlombok:lombok:1.18.28'
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    runtimeOnly 'com.oracle.database.jdbc:ojdbc8'
+    annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+    annotationProcessor 'org.projectlombok:lombok'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    // 쿼리를 편하게 보여주는 라이브러리
+    implementation 'com.github.gavlyukovskiy:p6spy-spring-boot-starter:1.9.0'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+
+    // QueryDSL (스프링 부트 3.0 이상)
+    implementation 'com.querydsl:querydsl-jpa:5.0.0:jakarta'
+    annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jakarta"
+
+    implementation "com.querydsl:querydsl-core"
+    implementation "com.querydsl:querydsl-collections"
+
+    annotationProcessor "jakarta.annotation:jakarta.annotation-api"
+    annotationProcessor "jakarta.persistence:jakarta.persistence-api"
+//  /QueryDSL
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+// QueryDSL
+// 경로 설정
+def generated = 'src/main/generated'
+
+// QClass 생성 위치 설정
+tasks.withType(JavaCompile) {
+    options.getGeneratedSourceOutputDirectory().set(file(generated))
+}
+
+// sourceSet에 QClass 경로 설정
+sourceSets {
+    main.java.srcDirs += [ generated ]
+}
+
+// clean 실행시 QClass도 같이 비우도록 설정
+clean {
+    delete file(generated)
+}

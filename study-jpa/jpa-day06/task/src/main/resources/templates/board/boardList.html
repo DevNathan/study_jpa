@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        section{
+            margin: 50px auto;
+            width: 800px;
+        }
+        h1{
+            margin: 20px;
+        }
+        thead {
+            text-align: center;
+        }
+
+        table {
+            border-color: black;
+            border-top: 1px solid;
+        }
+
+        th{
+            border-color: black;
+            border-bottom: 3px solid;
+            height: 40px;
+        }
+        td{
+            border-bottom: 1px solid black;
+            height: 30px;
+        }
+        th,
+        td {
+            padding: 5px;
+            width: 200px;
+        }
+
+        .flex{
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button{
+            height: 30px;
+            width: 100px;
+            margin-top: 20px;
+        }
+
+    </style>
+</head>
+<body>
+<section>
+    <div class="flex">
+        <h1>커뮤니티 게시판</h1>
+        <button type="button">글쓰기</button>
+    </div>
+    <table cellspacing="0">
+        <thead>
+        <tr>
+            <th>게시물 번호</th>
+            <th>게시물 제목</th>
+            <th>작성자</th>
+            <th>작성일자</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr></tr>
+        </tbody>
+    </table>
+
+</section>
+
+</body>
+</html>

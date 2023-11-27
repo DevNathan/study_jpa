@@ -15,7 +15,7 @@
  	> 2-8 [고아 객체 관리](#2-8-고아-객체-관리)
 3. [JPA 구조](#3-jpa-구조)
 	> 3-1 [영속성 컨텍스트(Persistence Context)](#3-1-영속성-컨텍스트persistence-context)
-4. [JPA 쿼리](#4-jpa-쿼리)
+4. [JPA 쿼리들](#4-jpa-쿼리들)
 	> 1. [JPQL(Java Persistence Query Language)](#1-jpqljava-persistence-query-language)
 
 ***

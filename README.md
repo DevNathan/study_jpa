@@ -490,9 +490,42 @@ Board board = entityManager.getReference(Board.class, 1L);
 
 ***
 ## 4-2. Native Query
+	네이티브쿼리는 SQL쿼리문법을 그대로 가져왔기 때문에 기존에 RDB중심의 설계처럼 쿼리문을 작성하면 된다.
+ 	RDB에서 제공하는 장점을 사용하여 쿼리문을 원할하게 작성할 수 있다. 예를들어, 집계함수를 사용할 수 있다.
+  	하지만 네이티브 쿼리를 사용한다는 것은 기본적으로 JPA를 사용하는 이유와 멀어지고 RDB중심 설계로 돌아가는
+   	일이 될 수도 있으므로 사용을 남발하면 유지보수에 어려움을 겪을 수 있다. 보다 정교하고 정확한 데이터 정보를
+	요구할 때 사용하는 것이 좋다.
 
+ 	entityManager.createNativeQuery([쿼리], [엔티티 클래스])
+  	쿼리에 JPQL문법을 작동시키면 그에 맞는 결과값을 조회하고 엔티티 클래스 타입으로 반환해준다.
+ 	이때 반환타입은 Query이다.
+
+### 문법
+	문법은 일반적인 SQL 쿼리문을 그대로 사용하면 된다.
+     
 ***
 ## 4-3. Criteria
+	자바 코드 기반으로 작성하는 쿼리문으로, JPQL이나 NativeQuery처럼 문자열로 작성하지 않아서 작성단계에서
+ 	오류를 검증할 수 있다. 또한, JPA에서 제공하는 표준 API로 따로 디펜던시를 달아줄 필요 없이 자유롭게 사용할 수 있다.
+  	하지만 Criteria를 이용해 쿼리문을 작성하는 것은 사전준비단계도 길고 쿼리문 자체만으로도
+   	가독성이 매우 떨어진다는 단점이 있다.
+
+### 문법
+```java
+//        criteria 사용 준비
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+//        어떤 엔티티를 조회용으로 사용할 것인지 설정한다.
+        CriteriaQuery<Member> query = criteriaBuilder.createQuery(Member.class);
+
+//        조회 클래스, from 절을 세팅하고 criteria로 쿼리를 만들 때 이 객체를 사용한다.
+        Root<Member> m = query.from(Member.class);
+
+//        쿼리 생성하기
+        CriteriaQuery<Member> criteriaQuery = query.select(m).where(criteriaBuilder.equal(m.get("name"), "홍길동"));
+
+        List<Member> resultList = entityManager.createQuery(criteriaQuery).getResultList();
+```
+
 
 ***
 ## 4-4. QueryDSL

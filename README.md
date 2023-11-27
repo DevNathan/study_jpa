@@ -489,10 +489,10 @@ Board board = entityManager.getReference(Board.class, 1L);
   	불상사가 생기게 된다. 이렇게 되면 성능 하락을 야기하므로 강제로 조인해서 가져오도록 fetch를 걸어줘야만 한다.
 
 ***
-## 2. Native Query
+## 4-2. Native Query
 
 ***
-## 3. Criteria
+## 4-3. Criteria
 
 ***
-## 4. QueryDSL
+## 4-4. QueryDSL

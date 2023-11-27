@@ -15,7 +15,7 @@
  	> 2-8 [고아 객체 관리](#2-8-고아-객체-관리)
 3. [JPA 구조](#3-jpa-구조)
 	> 3-1 [영속성 컨텍스트(Persistence Context)](#3-1-영속성-컨텍스트persistence-context)
-4. [JPQL](#4-jpql)
+4. [JPQL(Java Persistence Query Language)](#4-jpqljava-persistence-query-language)
 
 ***
 ## 1. JPA란?
@@ -461,4 +461,16 @@ Board board = entityManager.getReference(Board.class, 1L);
 		remove()를 통해 해당 엔티티를 영속성 컨텍스트에서 제거하고 DB에서도 제거한다.
 
 ***
-## 4. JPQL
+실제 대부분의 서비스들은 @Id 정보만으로 컨트롤하는 것은 불가능하다. 그럼에도 불구하고 EntityManager는 find()를 ID 정보로밖에 할 수 없으므로 사용이 매우 제한 될 수 밖에 없다. 이를 극복하고자 JPA는 여러 쿼리문법을 지원한다.
+***
+## 4. JPQL(Java Persistence Query Language)
+	JPQL (Java Persistence Query Language)은 주로 쿼리 언어로 사용되는 것이 아니라, 
+ 	엔티티를 검색하고 조회하는 데 사용된다.
+	기본적으로 SQL의 SELECT 문법과 크게 다르지 않다.
+
+ 	entityManager.createQuery([쿼리], [엔티티 클래스])
+	쿼리에 JPQL문법을 작동시키면 그에 맞는 결과값을 조회하고 엔티티 클래스 타입으로 반환해준다.
+ 	이때 반환타입은 TypedQuery<>이다.
+
+### 문법
+	

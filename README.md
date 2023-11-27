@@ -15,7 +15,8 @@
  	> 2-8 [고아 객체 관리](#2-8-고아-객체-관리)
 3. [JPA 구조](#3-jpa-구조)
 	> 3-1 [영속성 컨텍스트(Persistence Context)](#3-1-영속성-컨텍스트persistence-context)
-4. [JPQL(Java Persistence Query Language)](#4-jpqljava-persistence-query-language)
+4. [JPA 쿼리](#4-jpa-쿼리)
+	> 1. [JPQL(Java Persistence Query Language)](#1-jpqljava-persistence-query-language)
 
 ***
 ## 1. JPA란?
@@ -461,12 +462,12 @@ Board board = entityManager.getReference(Board.class, 1L);
 		remove()를 통해 해당 엔티티를 영속성 컨텍스트에서 제거하고 DB에서도 제거한다.
 
 ***
-# JPA 쿼리
+# 4. JPA 쿼리들
 	실제 대부분의 서비스들은 @Id 정보만으로 컨트롤하는 것은 불가능하다. 
  	그럼에도 불구하고 EntityManager는 find()를 ID 정보로밖에 할 수 없으므로 사용이 매우 제한 될 수 밖에 없다. 
   	이를 극복하고자 JPA는 여러 쿼리문법을 지원한다.
 ***
-## 4. JPQL(Java Persistence Query Language)
+## 1. JPQL(Java Persistence Query Language)
 	JPQL (Java Persistence Query Language)은 주로 쿼리 언어로 사용되는 것이 아니라, 
  	엔티티를 검색하고 조회하는 데 사용된다.
 	기본적으로 SQL의 SELECT 문법과 크게 다르지 않다.
@@ -476,4 +477,22 @@ Board board = entityManager.getReference(Board.class, 1L);
  	이때 반환타입은 TypedQuery<>이다.
 
 ### 문법
-	
+	select m from Member m where m.name='홍길동'
+
+	Asterisk(*)는 사용이 불가능하며 모든 정보를 가져오고 싶다면 from Member m 처럼 별칭을 지정해주고
+ 	select m을 해주면 모든 정보를 가져올 수 있게된다. 구체적인 정보를 원한다면 m.name처럼 지정해주면 된다.
+
+
+	select b from Board b join fetch b.member m
+
+ 	join을 하여 정보를 가져올 시 만약 지연로딩을 엔티티에 걸어줬다면 셀렉트를 테이블마다 따로따로 해서 가져오는
+  	불상사가 생기게 된다. 이렇게 되면 성능 하락을 야기하므로 강제로 조인해서 가져오도록 fetch를 걸어줘야만 한다.
+
+***
+## 2. Native Query
+
+***
+## 3. Criteria
+
+***
+## 4. QueryDSL

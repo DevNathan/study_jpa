@@ -526,6 +526,28 @@ Board board = entityManager.getReference(Board.class, 1L);
         List<Member> resultList = entityManager.createQuery(criteriaQuery).getResultList();
 ```
 
-
 ***
 ## 4-4. QueryDSL
+	자바 코드 기반으로 작성하는 쿼리문으로, JPQL이나 NativeQuery처럼 문자열로 작성하지 않아서 작성단계에서
+ 	오류를 검증할 수 있다. Criteria에 비해 코드 가독성이 좋은 것이 장점이지만 JPA에서 제공하지 않는 비표준 API이므로
+  	사용자가 따로 디펜던시를 달아줘야 한다.
+
+### 문법
+```java
+        JPAQueryFactory queryFactory = new JPAQueryFactory(entityManager);
+
+        QMember member = QMember.member;
+
+//        쿼리 생성
+        JPAQuery<Member> query = queryFactory.selectFrom(member)
+                .where(member.address.address.like("%강%"));
+
+//        쿼리 실행
+        List<Member> members = query.fetch();
+
+        for(Member showMember : members){
+            System.out.println("result = " + showMember);
+        }
+```
+	쿼리DSL은 개발자들이 Q타입의 클래스들을 새롭게 생성해주며 이는 작성자가 만든 Entity에 대응하여 동일하게 만들어진다.
+ 	이로써 컴파일시 오류를 쉽게 찾게 도와준다. 

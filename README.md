@@ -16,7 +16,10 @@
 3. [JPA 구조](#3-jpa-구조)
 	> 3-1 [영속성 컨텍스트(Persistence Context)](#3-1-영속성-컨텍스트persistence-context)
 4. [JPA 쿼리들](#4-jpa-쿼리들)
-	> 4-1 [JPQL(Java Persistence Query Language)](#4-1-jpqljava-persistence-query-language)
+	> 4-1 [JPQL(Java Persistence Query Language)](#4-1-jpqljava-persistence-query-language)<br>
+ 	> 4-2 [Native Query](#4-2-native-query)<br>
+ 	> 4-3 [Criteria](#4-3-criteria)<br>
+	> 4-4 [QueryDSL](#4-4-querydsl)
 
 ***
 ## 1. JPA란?
@@ -489,7 +492,7 @@ Board board = entityManager.getReference(Board.class, 1L);
   	불상사가 생기게 된다. 이렇게 되면 성능 하락을 야기하므로 강제로 조인해서 가져오도록 fetch를 걸어줘야만 한다.
 
 ***
-## 4-2. Native Query
+## 4-2 Native Query
 	네이티브쿼리는 SQL쿼리문법을 그대로 가져왔기 때문에 기존에 RDB중심의 설계처럼 쿼리문을 작성하면 된다.
  	RDB에서 제공하는 장점을 사용하여 쿼리문을 원할하게 작성할 수 있다. 예를들어, 집계함수를 사용할 수 있다.
   	하지만 네이티브 쿼리를 사용한다는 것은 기본적으로 JPA를 사용하는 이유와 멀어지고 RDB중심 설계로 돌아가는
@@ -504,7 +507,7 @@ Board board = entityManager.getReference(Board.class, 1L);
 	문법은 일반적인 SQL 쿼리문을 그대로 사용하면 된다.
      
 ***
-## 4-3. Criteria
+## 4-3 Criteria
 	자바 코드 기반으로 작성하는 쿼리문으로, JPQL이나 NativeQuery처럼 문자열로 작성하지 않아서 작성단계에서
  	오류를 검증할 수 있다. 또한, JPA에서 제공하는 표준 API로 따로 디펜던시를 달아줄 필요 없이 자유롭게 사용할 수 있다.
   	하지만 Criteria를 이용해 쿼리문을 작성하는 것은 사전준비단계도 길고 쿼리문 자체만으로도
@@ -527,7 +530,7 @@ Board board = entityManager.getReference(Board.class, 1L);
 ```
 
 ***
-## 4-4. QueryDSL
+## 4-4 QueryDSL
 	자바 코드 기반으로 작성하는 쿼리문으로, JPQL이나 NativeQuery처럼 문자열로 작성하지 않아서 작성단계에서
  	오류를 검증할 수 있다. Criteria에 비해 코드 가독성이 좋은 것이 장점이지만 JPA에서 제공하지 않는 비표준 API이므로
   	사용자가 따로 디펜던시를 달아줘야 한다.

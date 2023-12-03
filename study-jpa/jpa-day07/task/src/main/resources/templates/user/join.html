@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    .flex {
+      display: flex;
+    }
+
+    .label {
+      margin: 0 10px 0 0;
+    }
+
+    .label > div {
+      padding: 1px;
+    }
+
+    .label > div,
+    .input > div {
+      margin-top: 10px;
+      text-align: right;
+    }
+
+    .btn-box{
+      text-align: right;
+      width: 230px;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+<fieldset>
+  <legend>회원가입</legend>
+  <form action="/user/join" method="post">
+
+    <div class="flex">
+      <div class="label">
+        <div>아이디 :</div>
+        <div>비밀번호 :</div>
+        <div>이름 :</div>
+        <div>주소 1 :</div>
+        <div>주소 2 :</div>
+        <div>우편번호 :</div>
+        <div class="gender-label">성별 :</div>
+      </div>
+      <div class="input">
+        <div><input type="text" name="loginId"></div>
+        <div><input type="password" name="password"></div>
+        <div><input type="text" name="name"></div>
+        <div><input type="text" name="address"></div>
+        <div><input type="text" name="addressDetail"></div>
+        <div><input type="text" name="zipcode"></div>
+        <div class="gender-input">
+          남 <input type="radio" name="gender" value="M">
+          여 <input type="radio" name="gender" value="F">
+        </div>
+      </div>
+    </div>
+    <div class="btn-box">
+      <button>회원가입</button>
+    </div>
+  </form>
+
+</fieldset>
+</body>
+</html>

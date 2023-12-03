@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    textarea {
+      resize: none;
+    }
+
+    input {
+      width: 810px;
+      padding: 10px;
+    }
+
+    .btn-box {
+      text-align: right;
+      width: 830px;
+      margin: 20px 0 0 0;
+    }
+
+    button {
+      padding: 10px;
+    }
+
+    fieldset {
+      width: 1000px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .reply-btn,
+    .replyWrite {
+      margin: 20px;
+      display: flex;
+    }
+
+    .flex {
+      display: flex;
+    }
+
+    .reply-btn > button {
+      width: 100px;
+    }
+
+    .reply{
+      margin-top: 20px;
+      margin-left: 20px;
+      width: 800px;
+    }
+
+    .reply td {
+      border-bottom: 1px solid gray;
+      padding-bottom: 20px;
+    }
+
+    .reply td:nth-child(2){
+      width: 600px;
+    }
+  </style>
+</head>
+<body>
+<fieldset>
+  <legend>글 상세보기</legend>
+  <form action="" method="post">
+    <h3>제목</h3>
+    <div class="title"></div>
+    <h3>내용</h3>
+    <div class="content"></div>
+    <br>
+    <div class="btn-box">
+      <button>수정 하기</button>
+      <button type="button">뒤로가기</button>
+    </div>
+  </form>
+</fieldset>
+</body>
+</html>

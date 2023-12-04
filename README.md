@@ -12,7 +12,8 @@
  	> 2-5 [MappedSuperClass](#2-5-MappedSuperClass)<br>
  	> 2-6 [프록시와 지연 로딩](#2-6-프록시와-지연-로딩)<br>
  	> 2-7 [영속성 전이(CascadeType)](#2-7-영속성-전이cascadetype)<br>
- 	> 2-8 [고아 객체 관리](#2-8-고아-객체-관리)
+ 	> 2-8 [고아 객체 관리](#2-8-고아-객체-관리)<br>
+ 	> 2-9 [JPA 레포지토리](#2-9-jpa-레포지토리)
 3. [JPA 구조](#3-jpa-구조)
 	> 3-1 [영속성 컨텍스트(Persistence Context)](#3-1-영속성-컨텍스트persistence-context)
 4. [JPA 쿼리들](#4-jpa-쿼리들)
@@ -400,6 +401,16 @@ Board board = entityManager.getReference(Board.class, 1L);
  
  	orphanRemoval은 부모 엔티티에서 자식을 분리시킬 경우 삭제가 된다.
   	Cascade.REMOVE는 부모 엔티티를 제거할 시 자식도 삭제 된다.
+
+### 2-9 jpa 레포지토리
+	JPA의 가장 큰 특징이라고 할 수 있는 것은, 일반적인 CRUD작업을 더이상 할 필요가 없다는 것이다.
+ 	JPA에서 기본적으로 제공하는 레포지토리를 상속해줌으로써 사용할 수 있다.
+#### 사용
+```java
+@Repository
+public interface BookRepository extends JpaRepository<Book, Long> {
+}
+```
 
 ***
 ## 3. JPA 구조

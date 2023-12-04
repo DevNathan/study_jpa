@@ -404,7 +404,7 @@ Board board = entityManager.getReference(Board.class, 1L);
 
 ### 2-9 jpa 레포지토리
 	JPA의 가장 큰 특징이라고 할 수 있는 것은, 일반적인 CRUD작업을 더이상 할 필요가 없다는 것이다.
- 	JPA에서 기본적으로 제공하는 레포지토리를 상속해줌으로써 사용할 수 있다.
+ 	JPA에서 기본적으로 제공하는 JPA 레포지토리를 상속해 줌으로써 사용할 수 있다.
 #### 사용
 ```java
 @Repository

@@ -547,8 +547,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 사용자가 따로 디펜던시를 달아줘야 한다.<br>
 2021년 이후로 적극적으로 관리되지 않는 라이브러리로써, hibernate6과도 호환되지 않는 모습을 보인다.<br>
 따라서 해당 라이브러리를 사용하기에는 너무 deprecated되었음을 부정하기 어렵다.
-대안책으로 다음을 한번 고려해볼 수 있다.
-<a href="https://github.com/OpenFeign/querydsl">QueryDSL of OpenFeign</a>
+대안책으로 다음을 한번 고려해볼 수 있다.<br>
+<a href="https://github.com/OpenFeign/querydsl">QueryDSL_OpenFeign</a>
 
 ### 문법
 ```java

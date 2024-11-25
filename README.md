@@ -545,6 +545,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 	자바 코드 기반으로 작성하는 쿼리문으로, JPQL이나 NativeQuery처럼 문자열로 작성하지 않아서 작성단계에서
  	오류를 검증할 수 있다. Criteria에 비해 코드 가독성이 좋은 것이 장점이지만 JPA에서 제공하지 않는 비표준 API이므로
   	사용자가 따로 디펜던시를 달아줘야 한다.
+   	2021년 이후로 적극적으로 관리되지 않는 라이브러리로써, hibernate6과도 호환되지 않는 모습을 보인다.
+    	따라서 해당 라이브러리를 사용하기에는 너무 deprecated되었음을 부정하기 어렵다.
 
 ### 문법
 ```java
